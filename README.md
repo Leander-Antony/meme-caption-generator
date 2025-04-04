@@ -31,7 +31,11 @@ pip install -r requirements.txt
   pytesseract.pytesseract.tesseract_cmd = r'C:\Path\To\Tesseract-OCR\tesseract.exe'
   ```  
 
-### 3️⃣ Download the Meme Dataset  
+### 3️⃣ Install Ollama Client  
+To use the **Ollama Mistral model** locally, you need to install the Ollama client:  
+- Download & install it from [here](https://ollama.com/download).  
+
+### 4️⃣ Download the Meme Dataset  
 - Ensure you have Kaggle API credentials set up.  
 - Run the following command to download the dataset:  
   ```python
@@ -39,7 +43,7 @@ pip install -r requirements.txt
   path = kagglehub.dataset_download("akuppps/dankmemes-reddit-top-comments")
   ```  
 
-### 4️⃣ Run the Pipeline  
+### 5️⃣ Run the Pipeline  
 Run the script to generate meme captions:  
 ```python
 for i in range(7):
@@ -52,4 +56,5 @@ for i in range(7):
 ```
 https://example-meme.com/meme1.jpg
 "When you realize it's Monday again... 😭"
-```  
+```
+
