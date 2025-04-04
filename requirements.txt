@@ -1,0 +1,16 @@
+h5py==3.13.0
+Keras==2.2.5
+Keras-Applications==1.0.8
+Keras-Preprocessing==1.1.2
+numpy==2.2.4
+PyYAML==6.0.2
+scipy==1.15.2
+six==1.17.0
+pytesseract
+Pillow
+requests
+pandas
+transformers
+ollama
+kagglehub
+torch
