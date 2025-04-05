@@ -63,8 +63,8 @@ for i in range(7):
 ---
 
 ## 🎯 Sample Output  
-```
-Caption: "When Will Smith thought he was among friends, but then realized he wasn't hiding his love for emojis."
-```
+
+![image](https://github.com/user-attachments/assets/a509d554-2657-4083-8bad-be62499fe155)
+
 
 ---
