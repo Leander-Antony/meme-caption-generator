@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+  ollama:
+    image: ollama/ollama
+    privileged: true
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    entrypoint: >
+      bash -c "
+        apt-get update &&
+        apt-get install -y curl &&
+        ollama serve & 
+        sleep 2 &&
+        echo '⏳ Pulling mistral model...' &&
+        until curl -s http://localhost:11434; do sleep 1; done &&
+        ollama pull mistral &&
+        echo '✅ Mistral model pulled and ready.' &&
+        tail -f /dev/null
+      "
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  app:
+    build: ./app
+    depends_on:
+      ollama:
+        condition: service_healthy
+    ports:
+      - "8888:8888"
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+    volumes:
+      - ./app:/app
+    working_dir: /app
+    command: >
+      bash -c "
+        echo '🚀 Starting Jupyter Notebook...' &&
+        jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root
+      "
+
+volumes:
+  ollama-data:
