@@ -1,60 +1,70 @@
+
+
 # Meme Caption Generator  
 
 ## 📌 Overview  
-This project is a **Meme Caption Generator** that extracts text from meme images and generates humorous captions using AI. The pipeline:  
-1. **Downloads a dataset** of memes from Kaggle.  
-2. **Extracts text from images** using Tesseract OCR.  
-3. **Generates descriptions** of the images using BLIP (Salesforce's Image Captioning model).  
-4. **Creates meme captions** using the Mistral model from Ollama.  
+This project is a **Meme Caption Generator** that extracts text from meme images and generates humorous captions using AI.  
+
+### 💡 Pipeline Overview:  
+1. **Downloads a dataset** of memes from Kaggle  
+2. **Extracts text from images** using Tesseract OCR  
+3. **Generates image descriptions** using BLIP (Salesforce's Image Captioning model)  
+4. **Generates meme captions** using the Mistral model via Ollama  
+
+---
 
 ## 🛠️ Technologies Used  
-- **Python** (Core language)  
-- **Pandas** (For dataset handling)  
-- **KaggleHub** (For dataset retrieval)  
-- **Pytesseract** (OCR for text extraction)  
-- **PIL (Pillow)** (For image processing)  
-- **Transformers (Hugging Face)** (For image captioning)  
-- **Ollama (Mistral Model)** (For generating humorous captions)  
+- **Python**  
+- **Pandas**  
+- **KaggleHub**  
+- **Pytesseract**  
+- **Pillow (PIL)**  
+- **Transformers (Hugging Face)**  
+- **Ollama (Mistral)**  
+
+---
 
 ## ⚙️ Installation & Setup  
 
-### 1️⃣ Install Dependencies  
-Make sure you have Python installed, then install all required dependencies using:  
+### 1️⃣ Clone the Repository  
 ```bash
-pip install -r requirements.txt
-```  
+git clone https://github.com/your-username/meme-caption-generator.git  
+cd meme-caption-generator  
+```
 
-### 2️⃣ Install & Configure Tesseract OCR  
-- Download & install **Tesseract OCR** from [here](https://github.com/UB-Mannheim/tesseract/wiki).  
-- Update the **Tesseract path** in the script:  
-  ```python
-  pytesseract.pytesseract.tesseract_cmd = r'C:\Path\To\Tesseract-OCR\tesseract.exe'
-  ```  
 
-### 3️⃣ Install Ollama Client  
-To use the **Ollama Mistral model** locally, you need to install the Ollama client:  
-- Download & install it from [here](https://ollama.com/download).  
+## 🐳 Run with Docker Compose  
 
-### 4️⃣ Download the Meme Dataset  
-- Ensure you have Kaggle API credentials set up.  
-- Run the following command to download the dataset:  
-  ```python
-  import kagglehub
-  path = kagglehub.dataset_download("akuppps/dankmemes-reddit-top-comments")
-  ```  
+This project uses Docker Compose to run the **Mistral model (via Ollama)**.
 
-### 5️⃣ Run the Pipeline  
-Run the script to generate meme captions:  
+### ▶️ Start the Ollama Server  
+Ensure Docker is installed, then run:
+```bash
+docker-compose up
+```
+
+### ⏳ Wait for this message to appear in the terminal:
+```
+✅ Mistral model pulled and ready.
+```
+
+Once you see that, you can run the meme caption pipeline in your Python script.
+
+---
+
+## 🧠 Run the Meme Captioning Pipeline  
+Once everything is set up, generate meme captions like so:
 ```python
 for i in range(7):
-    print(urls[i])
     captions = pipeline(urls[i])
-    print(captions)
-```  
-
-## 🎯 Output Example  
-```
-https://example-meme.com/meme1.jpg
-"When you realize it's Monday again... 😭"
+    print("Caption:", captions)
 ```
 
+---
+
+## 🎯 Sample Output  
+```
+Caption: "When Will Smith thought he was among friends, but then realized he wasn't hiding his love for emojis."
+```
+
+---
