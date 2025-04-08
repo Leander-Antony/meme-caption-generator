@@ -28,7 +28,7 @@ This project is a **Meme Caption Generator** that extracts text from meme images
 
 ### 1️⃣ Clone the Repository  
 ```bash
-git clone https://github.com/your-username/meme-caption-generator.git  
+git clone https://github.com/Leander-Antony/meme-caption-generator.git  
 cd meme-caption-generator  
 ```
 
